@@ -1,5 +1,8 @@
-import logo from './logo.svg';
 import Styled from 'styled-components';
+import { Button, Input } from 'components';
+import { TodoItem } from './TodoItem';
+import { useState } from 'react';
+
 
 
 const Container = Styled.div`
@@ -19,12 +22,42 @@ const Contents = Styled.div`
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 `
 
+const InputContainer = Styled.div`
+  display: flex;
+`
+
+const TodoListContainer = Styled.div`
+  min-width: 350px;
+  height: 400px;
+  overflow-y: scroll;
+  border: 1px solid #BDBDBD;
+  margin-bottom: 20px;
+`
 
 function App() {
+  const [todo, setTodo] = useState('')
+  const [todos, setTodos] = useState<string[]>([])
+
+  const addTodo = (): void => {
+    if (todo) {
+      setTodos( prevTodos => prevTodos.concat(todo));
+      setTodo('');
+    }
+  }
+
+  const deleteTodo = (index: number): void => {
+    setTodos(prevTodos => prevTodos.filter((todo, todoIndex) => todoIndex !== index));
+  }
   return (
   <Container>
     <Contents>
-      
+      <TodoListContainer>
+        {todos.map((todo, index) => < TodoItem key={todo} label={todo} onDelete={() => deleteTodo(index)} />)}
+      </TodoListContainer>
+      <InputContainer>
+        <Input placeholder="할 일을 입력해 주세요" value={todo} onChange={(text) => setTodo(text)}/>
+        <Button label="추가" onClick={() => addTodo()}/>
+      </InputContainer>
     </Contents>
   </Container>
   );
