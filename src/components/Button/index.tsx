@@ -36,7 +36,7 @@ interface IButtonProps {
 export function Button({ label, onClick, backgroundColor = '#304FFE', hoverColor = '#1E40FF' }: IButtonProps) {
     return (
         <Container onClick={onClick} backgroundColor={backgroundColor} hoverColor={hoverColor}>
-            <Label >
+            <Label>
                 {label}
             </Label>
         </Container>
