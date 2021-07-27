@@ -4,6 +4,7 @@ import { Switch, Route} from 'react-router-dom'
 
 import { ToDoListProvider } from 'Contexts';
 import { Add, List, Detail } from 'Pages';
+import { PageHeader } from 'Components';
 
 
 const Container = Styled.div`
@@ -17,24 +18,25 @@ const Container = Styled.div`
 
 function App() {
   return (
-    <ToDoListProvider>
-      <Container>
-        <Switch>
-          <Route exact path="/">
-            <List />
-          </Route>
-          
-          <Route path="/add">
-            <Add />
-          </Route>
+      <ToDoListProvider>
+        <Container>
+            <PageHeader />
+          <Switch>
+            <Route exact path="/">
+              <List />
+            </Route>
+            
+            <Route path="/add">
+              <Add />
+            </Route>
 
-          <Route path="/detail/:id">
-            <Detail />
-          </Route>
-          
-        </Switch>
-      </Container>
-    </ToDoListProvider>
+            <Route path="/detail/:id">
+              <Detail />
+            </Route>
+            
+          </Switch>
+        </Container>
+      </ToDoListProvider>  
   );
 }
 
