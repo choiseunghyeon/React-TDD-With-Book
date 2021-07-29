@@ -3,7 +3,7 @@ import Styled from 'styled-components';
 import { Switch, Route} from 'react-router-dom'
 
 import { ToDoListProvider } from 'Contexts';
-import { Add, List, Detail } from 'Pages';
+import { Add, List, Detail, NotFound } from 'Pages';
 import { PageHeader } from 'Components';
 
 
@@ -20,7 +20,7 @@ function App() {
   return (
       <ToDoListProvider>
         <Container>
-            <PageHeader />
+          <PageHeader />
           <Switch>
             <Route exact path="/">
               <List />
@@ -34,6 +34,9 @@ function App() {
               <Detail />
             </Route>
             
+            <Route>
+              <NotFound />
+            </Route>
           </Switch>
         </Container>
       </ToDoListProvider>  
