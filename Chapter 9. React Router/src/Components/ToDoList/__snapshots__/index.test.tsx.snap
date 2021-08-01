@@ -14,5 +14,6 @@ exports[`<ToDoList /> renders component correctly 1`] = `
     class="c0"
     data-testid="toDoList"
   />
+  ,
 </div>
 `;
